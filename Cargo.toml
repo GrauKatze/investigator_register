@@ -1,6 +1,15 @@
 [package]
 name = "investigator_register"
-version = "0.1.0"
+version = "0.0.0"
 edition = "2024"
+authors.workspace = true
 
 [dependencies]
+
+[lib]
+name = "register"
+path = "src/lib.rs"
+
+[[bin]]
+name = "register"
+path = "src/bin/cli.rs"
