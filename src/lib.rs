@@ -1,16 +1,26 @@
 #![warn(missing_docs)]
 
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
+//! Help to save work file
+
+use std::{ path::Path};
+
+/// reg file in DB
+pub fn take_file(file_path: String) -> Result<(), String> {
+    if Path::exists(Path::new(&file_path)) {
+        if is_file_reg(&file_path){
+            Ok(())
+        }else {
+            Err(format!("Can't reg file, path: \"{}\"", file_path))
+        }
+    } else {
+        Err(format!("path is not valid, path: \"{}\"", file_path))
+    }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+fn is_file_reg(_file_path: &String)->bool{
+    true
+}
+/// give file from DB
+pub fn give_file(_file_path: String) -> Result<(), String> {
+    Ok(())
 }
